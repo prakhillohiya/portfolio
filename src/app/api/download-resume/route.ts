@@ -1,25 +1,19 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: NextRequest, res: NextResponse) {
 
-  try {
-    const fileName = "Prakhil_Lohiya.pdf";
-    const URL = "https://bit.ly/3vnTdco";
+  const fileName = "Prakhil_Lohiya.pdf";
+  const URL = "https://bit.ly/3vnTdco";
 
-    const response = await fetch(URL);
+  const response = await fetch(URL);
 
-    return new Response(response.body, {
-      headers: {
-        ...response.headers,
-        "content-disposition": `attachment; filename="${fileName}"`,
-      },
-    });
-  } catch (error) {
-    console.error("Error downloading file:", error);
-    res.status(500).end();
-  }
-
+  return new Response(response.body, {
+    headers: {
+      ...response.headers,
+      "content-disposition": `attachment; filename="${fileName}"`,
+    },
+  });
 
 
 }
