@@ -96,7 +96,7 @@ function Portfolio() {
       const blob = await response.blob();
 
       const tempAnchor = document.createElement("a");
-      tempAnchor.href = window.URL.createObjectURL(blob);
+      tempAnchor.href = window.URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
       tempAnchor.download = fileName;
 
       tempAnchor.click();
